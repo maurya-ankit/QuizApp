@@ -18,10 +18,6 @@ async def register(request: Request, user: UserInCreate = Body(...)):
     else:
         new_user = await request.app.mongodb["user"].insert_one(user)
         created_user = await request.app.mongodb["user"].find_one({"_id": new_user.inserted_id})
-        newdict = {
-            "email": created_user["email"],
-            "_id": str(created_user["_id"])
-        }
         token = create_access_token_for_user(created_user, str(SECRET_KEY))
         return UserWithToken(
             email=created_user.get("email"),
@@ -29,7 +25,6 @@ async def register(request: Request, user: UserInCreate = Body(...)):
             image=created_user.get("image"),
             token=token
         )
-        # return JSONResponse(newdict, status_code=status.HTTP_201_CREATED)
 
 
 @router.post("/login")

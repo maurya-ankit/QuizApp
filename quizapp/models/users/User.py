@@ -1,19 +1,7 @@
-from typing import Optional
+from typing import Optional, List
 import uuid
 from pydantic import BaseModel, Field, HttpUrl, EmailStr
-from bson import ObjectId
-
-
-class ObjectIdStr(str):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v):
-        if not isinstance(v, ObjectId):
-            raise ValueError("Not a valid ObjectId")
-        return str(v)
+from quizapp.models.Common import ObjectIdStr
 
 
 class UserId(BaseModel):
@@ -28,6 +16,7 @@ class UserInLogin(UserId):
 class UserInCreate(UserId):
     email: EmailStr
     password: str
+    quizes_Owned: List[str] = []
 
 
 class UserInUpdate(UserId):
