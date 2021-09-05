@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "QuizApp"
+version = "0.1.0"
+description = ""
+authors = ["Ankit Maurya <ankitmaurya18@cse.iiitp.ac.in>"]
+
+[tool.poetry.scripts]
+start="quizapp.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.6.9"
+fastapi = "^0.68.1"
+uvicorn = "^0.15.0"
+autopep8 = "^1.5.7"
+loguru = "^0.5.3"
+asyncpg = "^0.24.0"
+pymongo = {extras = ["srv"], version = "^3.12.0"}
+motor = "^2.5.1"
+pydantic = {extras = ["email"], version = "^1.8.2"}
+PyJWT = "^2.1.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
