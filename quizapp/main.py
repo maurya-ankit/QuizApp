@@ -44,10 +44,17 @@ def get_application() -> FastAPI:
 
 
 app = get_application()
-if __name__ == "__main__":
+
+
+def start():
+    """Launched with `poetry run start` at root level"""
     uvicorn.run(
         "quizapp.main:app",
         host=HOST,
         reload=DEBUG,
         port=PORT,
     )
+
+
+if __name__ == "__main__":
+    start()

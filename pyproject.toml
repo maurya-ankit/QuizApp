@@ -5,7 +5,7 @@ description = ""
 authors = ["Ankit Maurya <ankitmaurya18@cse.iiitp.ac.in>"]
 
 [tool.poetry.scripts]
-start="quizapp.main:app"
+start="quizapp.main:start"
 
 [tool.poetry.dependencies]
 python = "^3.6.9"
