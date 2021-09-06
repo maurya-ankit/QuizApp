@@ -32,7 +32,7 @@ def create_access_token_for_user(user: UserInUpdate, secret_key: str) -> str:
     )
 
 
-def get_username_from_token(token: str, secret_key: str) -> str:
+def get_email_from_token(token: str, secret_key: str) -> str:
     try:
         return JWTUser(**jwt.decode(token, secret_key, algorithms=[ALGORITHM])).email
     except jwt.PyJWTError as decode_error:

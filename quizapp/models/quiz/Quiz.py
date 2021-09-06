@@ -4,23 +4,7 @@ from typing import Optional, Set, List, Dict
 from pydantic import BaseModel, HttpUrl, EmailStr
 
 
-class Option(BaseModel):
-    _id: ObjectIdStr = None
-    ans_text: Optional[str]
-    ans_image: Optional[HttpUrl] = None
-
-
-class Question(BaseModel):
-    _id: ObjectIdStr = None
-    order: int = -1
-    question_text: str
-    question_description: Optional[str]
-    image: Optional[HttpUrl] = None
-    type_: str
-    options: List[str] = []
-
-
-class Quiz(BaseModel):
+class QuizInCreate(BaseModel):
     _id: ObjectIdStr = None
     name: str
     description: Optional[str]
@@ -28,9 +12,13 @@ class Quiz(BaseModel):
     from_: Optional[str]
     to_: Optional[str]
     image: Optional[HttpUrl] = None
+    quiz_id: str
     questions: List[str] = []
-    author: EmailStr
     editors: List[EmailStr] = []
     user_access: List[EmailStr] = []
     is_private: bool = True
     randomness: bool = False
+
+
+class Quiz(QuizInCreate):
+    author: EmailStr

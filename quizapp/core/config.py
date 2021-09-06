@@ -19,6 +19,8 @@ config = Config(".env")
 HOST = config("HOST", cast=str, default="0.0.0.0")
 PORT = config("PORT", cast=int, default=8000)
 
+JWT_ALGORITHM = config("JWT_ALGORITHM", cast=str, default="HS256")
+
 DEBUG: bool = config(
     "DEBUG",
     cast=bool,
